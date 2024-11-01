@@ -1,0 +1,29 @@
+[package]
+name = "poolarize"
+version = "0.1.0"
+authors = ["Manza <manza@poolarize.app>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+near-sdk = "4.1.1"
+near-contract-standards = "4.1.1"
+uint = { version = "0.9.3", default-features = false }
+#serde_json = { version = "1.0", features = ["arbitrary_precision"] }
+#json = "~0.12.4"
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
+
+
+# This can be removed when near-sdk is updated
+# Unfortuantely, this crate was yanked by the author and this is needed
+[patch.crates-io]
+parity-secp256k1 = { git = 'https://github.com/paritytech/rust-secp256k1.git' }

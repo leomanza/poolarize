@@ -1,0 +1,26 @@
+{
+  "name": "poolarize-app",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "dev": "pnpm --filter poolarize dev",
+    "build": "pnpm --filter poolarize build",
+    "build:contracts": "make -C ./contracts build",
+    "fmt": "prettier --write '**/*.{js,jsx,ts,tsx,json}'",
+    "fmt:check": "prettier --check '**/*.{js,jsx,ts,tsx,json}'",
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui"
+  },
+  "lint-staged": {
+    "**/*": [
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.3.3"
+  }
+}

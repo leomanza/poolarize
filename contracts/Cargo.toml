@@ -1,0 +1,19 @@
+[workspace]
+members = [
+    "poolarize", 
+    "generic-nep-141-token-contract"
+]
+resolver = "2"
+
+[profile.release]
+codegen-units=1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
+
+# This can be removed when near-sdk is updated
+# Unfortuantely, this crate was yanked by the author and this is needed
+[patch.crates-io]
+parity-secp256k1 = { git = 'https://github.com/paritytech/rust-secp256k1.git' }
