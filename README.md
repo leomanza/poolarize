@@ -57,7 +57,7 @@ The protocol automatically executes arbitrage trades when large discrepancies be
 
 1. Clone the repository:
 ```sh
-git clone https://github.com/yourusername/poolarize.git
+git clone https://github.com/leomanza/poolarize
 cd poolarize
 ```
 
