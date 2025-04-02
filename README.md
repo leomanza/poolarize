@@ -48,24 +48,72 @@ The protocol automatically executes arbitrage trades when large discrepancies be
 
 ## Getting Started
 
-### Build the contracts
+### Prerequisites
+- [Bun](https://bun.sh) installed on your system
+- [NEAR CLI](https://docs.near.org/docs/develop/basics/near-cli) installed for contract deployment
+- [Make](https://www.gnu.org/software/make/) installed for contract building
 
+### Quick Start
+
+1. Clone the repository:
 ```sh
-make build
+git clone https://github.com/yourusername/poolarize.git
+cd poolarize
 ```
 
-### Deploy the contracts
-Note: Make sure to update your owned accounts accordingly.
-
+2. Install dependencies:
 ```sh
-make deploy-testnet
+bun install
 ```
 
-### Run integration tests 
-Note: Make sure to update your owned accounts accordingly.
-
+3. Start the development server:
 ```sh
-make integration
+bun run dev
+```
+
+### Available Commands
+
+#### Frontend Commands
+```sh
+# Start development server
+bun run frontend:dev
+
+# Build for production
+bun run frontend:build
+
+# Build for development
+bun run frontend:build:dev
+
+# Preview production build
+bun run frontend:preview
+
+# Run linting
+bun run frontend:lint
+```
+
+#### Contract Commands
+```sh
+# Build contracts
+bun run contracts:build
+
+# Run contract tests
+bun run contracts:test
+
+# Deploy contracts
+bun run contracts:deploy
+```
+
+#### General Commands
+```sh
+# Format code
+bun run fmt
+
+# Check formatting
+bun run fmt:check
+
+# Run tests
+bun run test
+bun run test:ui  # Run tests with UI
 ```
 
 ### Test the contract

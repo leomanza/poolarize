@@ -4,13 +4,23 @@
   "type": "module",
   "scripts": {
     "prepare": "husky",
-    "dev": "pnpm --filter poolarize dev",
-    "build": "pnpm --filter poolarize build",
-    "build:contracts": "make -C ./contracts build",
+    "dev": "bun run --cwd frontend dev",
+    "build": "bun run --cwd frontend build",
+    "build:dev": "bun run --cwd frontend build:dev",
+    "preview": "bun run --cwd frontend preview",
+    "lint": "bun run --cwd frontend lint",
     "fmt": "prettier --write '**/*.{js,jsx,ts,tsx,json}'",
     "fmt:check": "prettier --check '**/*.{js,jsx,ts,tsx,json}'",
-    "test": "npx playwright test",
-    "test:ui": "npx playwright test --ui"
+    "test": "bun test",
+    "test:ui": "bun test --ui",
+    "contracts:build": "make -C ./contracts build",
+    "contracts:test": "make -C ./contracts test",
+    "contracts:deploy": "make -C ./contracts deploy",
+    "frontend:dev": "bun run --cwd frontend dev",
+    "frontend:build": "bun run --cwd frontend build",
+    "frontend:build:dev": "bun run --cwd frontend build:dev",
+    "frontend:preview": "bun run --cwd frontend preview",
+    "frontend:lint": "bun run --cwd frontend lint"
   },
   "lint-staged": {
     "**/*": [

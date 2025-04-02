@@ -1,0 +1,11 @@
+{
+  "install": {
+    "peer": true,
+    "production": false
+  },
+  "test": {
+    "preload": "./frontend/vite.config.ts",
+    "coverage": true
+  },
+  "debug": true
+} 
