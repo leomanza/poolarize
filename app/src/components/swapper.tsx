@@ -1,52 +1,75 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import * as Tabs from '@radix-ui/react-tabs'
-import { Button } from "@/components/ui/button"
-import SwapFeature from '@/components/swapFeature'
-import LiquidityFeature from '@/components/liquidittyFeature'
-import { Link } from 'lucide-react'
+import { useState } from "react";
+import * as Tabs from "@radix-ui/react-tabs";
+import { Button } from "@/components/ui/button";
+import SwapFeature from "@/components/swapFeature";
+import LiquidityFeature from "@/components/liquidittyFeature";
+import { Link } from "lucide-react";
+import { PoolInfo, useGetTokenBalance } from "@/lib/hooks";
 
-export default function Swapper() {
+export default function Swapper({ pools }: { pools: PoolInfo[] }) {
+  console.log("pools", pools);
+  const balance = useGetTokenBalance(pools[0].token_contract);
   return (
-    <div className="min-h-screen min-v-screen text-white">
+    <div className="min-v-screen min-h-screen text-white">
+      {balance.isFetched ? balance.data : "0"}
       <div className="container mx-auto px-4 py-12 lg:py-24">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
-          <div className="lg:w-1/2 lg:pr-12 mb-12 lg:mb-0">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#00FFFF]">Poolarize</h1>
-            <p className="text-xl mb-8 text-[#DADDF1]">The next generation decentralized AMM Protocol for Capital-Efficient Token Swaps</p>
-            <ul className="space-y-4 mb-8 text-[#DADDF1]">
-              <FeatureItem>Seamless cross-token swaps centered on one main token.</FeatureItem>
-              <FeatureItem>Only main token liquidity required; virtualized balances for others.</FeatureItem>
-              <FeatureItem>Real-time USD prices with auto-disable on price gaps.</FeatureItem>
+          <div className="mb-12 lg:mb-0 lg:w-1/2 lg:pr-12">
+            <h1 className="mb-6 bg-gradient-to-r from-[#3B82F6] to-[#00FFFF] bg-clip-text text-4xl font-bold text-transparent lg:text-5xl">
+              Poolarize
+            </h1>
+            <p className="mb-8 text-xl text-[#DADDF1]">
+              The next generation decentralized AMM Protocol for
+              Capital-Efficient Token Swaps
+            </p>
+            <ul className="mb-8 space-y-4 text-[#DADDF1]">
+              <FeatureItem>
+                Seamless cross-token swaps centered on one main token.
+              </FeatureItem>
+              <FeatureItem>
+                Only main token liquidity required; virtualized balances for
+                others.
+              </FeatureItem>
+              <FeatureItem>
+                Real-time USD prices with auto-disable on price gaps.
+              </FeatureItem>
             </ul>
             <div>
-            {/* <Button asChild>
+              {/* <Button asChild>
               <Link to="/login">Connect NEAR Account</Link>
             </Button> */}
             </div>
           </div>
-          <div className="lg:w-1/2 lg:mt-0 mt-12">
-            <div className="bg-gradient-to-b from-[#0A1F4D] to-[#081638] border border-[#DADDF1]/20 rounded-lg p-6">
-              <h2 className="text-2xl font-bold mb-2 text-[#3B82F6]">Start Trading</h2>
-              <p className="text-[#DADDF1] mb-6">Swap tokens or manage liquidity</p>
+          <div className="mt-12 lg:mt-0 lg:w-1/2">
+            <div className="rounded-lg border border-[#DADDF1]/20 bg-gradient-to-b from-[#0A1F4D] to-[#081638] p-6">
+              <h2 className="mb-2 text-2xl font-bold text-[#3B82F6]">
+                Start Trading
+              </h2>
+              <p className="mb-6 text-[#DADDF1]">
+                Swap tokens or manage liquidity
+              </p>
               <Tabs.Root defaultValue="swap" className="w-full">
-                <Tabs.List className="flex mb-6" aria-label="Manage your account">
+                <Tabs.List
+                  className="mb-6 flex"
+                  aria-label="Manage your account"
+                >
                   <Tabs.Trigger
-                    className="px-4 py-2 flex-1 text-center bg-[#0F3EB7]/20 first:rounded-l-md last:rounded-r-md hover:bg-[#0F3EB7]/30 data-[state=active]:bg-[#3B82F6] data-[state=active]:text-white transition"
+                    className="flex-1 bg-[#0F3EB7]/20 px-4 py-2 text-center transition first:rounded-l-md last:rounded-r-md hover:bg-[#0F3EB7]/30 data-[state=active]:bg-[#3B82F6] data-[state=active]:text-white"
                     value="swap"
                   >
                     Swap
                   </Tabs.Trigger>
                   <Tabs.Trigger
-                    className="px-4 py-2 flex-1 text-center bg-[#0F3EB7]/20 first:rounded-l-md last:rounded-r-md hover:bg-[#0F3EB7]/30 data-[state=active]:bg-[#3B82F6] data-[state=active]:text-white transition"
+                    className="flex-1 bg-[#0F3EB7]/20 px-4 py-2 text-center transition first:rounded-l-md last:rounded-r-md hover:bg-[#0F3EB7]/30 data-[state=active]:bg-[#3B82F6] data-[state=active]:text-white"
                     value="liquidity"
                   >
                     Liquidity
                   </Tabs.Trigger>
                 </Tabs.List>
                 <Tabs.Content value="swap">
-                  <SwapFeature />
+                  <SwapFeature pools={pools} />
                 </Tabs.Content>
                 <Tabs.Content value="liquidity">
                   <LiquidityFeature />
@@ -57,7 +80,7 @@ export default function Swapper() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function FeatureItem({ children }: { children: React.ReactNode }) {
@@ -77,5 +100,5 @@ function FeatureItem({ children }: { children: React.ReactNode }) {
       </svg>
       <span>{children}</span>
     </li>
-  )
+  );
 }

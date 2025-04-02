@@ -1,5 +1,5 @@
 import { useWallet } from "@/contexts/near";
-import { useWriteMessage } from "@/lib/guestbook";
+import { useWriteMessage } from "@/lib/hooks";
 import { FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

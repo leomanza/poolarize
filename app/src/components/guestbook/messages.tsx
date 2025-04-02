@@ -1,4 +1,4 @@
-import { GuestBookMessage, useGuestBookMessages } from "@/lib/guestbook";
+import { GuestBookMessage, useGuestBookMessages } from "@/lib/hooks";
 
 export default function Messages() {
   const { data, isLoading, isError } = useGuestBookMessages();

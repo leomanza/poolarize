@@ -1,4 +1,4 @@
-import { GUESTBOOK_CONTRACT } from "@/lib/guestbook";
+import { CONTRACT } from "@/lib/hooks";
 import { NetworkId } from "@near-wallet-selector/core";
 import React, { useEffect } from "react";
 import { create as createStore } from "zustand";
@@ -30,7 +30,7 @@ type NearProviderProps = {
   children: React.ReactNode;
 };
 
-const getNearContract = (networkId: NetworkId) => GUESTBOOK_CONTRACT[networkId];
+const getNearContract = (networkId: NetworkId) => CONTRACT;
 
 export default function NearProvider({ children }: NearProviderProps) {
   const { setWallet, setSignedAccountId, networkId } = useWallet();
