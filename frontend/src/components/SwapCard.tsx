@@ -1,9 +1,21 @@
-
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { ArrowDownIcon, RefreshCw, Settings } from "lucide-react";
 import TokenLogo from "./TokenLogo";
 
@@ -13,7 +25,7 @@ const SwapCard = () => {
   const [fromAmount, setFromAmount] = useState("");
   const [toAmount, setToAmount] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   const handleSwap = () => {
     setLoading(true);
     // Simulate loading
@@ -26,7 +38,7 @@ const SwapCard = () => {
   const handleFromAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setFromAmount(value);
-    
+
     // Simple simulation - in a real app, this would call the AMM formula or an API
     if (value && !isNaN(Number(value))) {
       const price = fromToken === "USDT" ? 2.5 : 0.4; // Dummy exchange rate
@@ -40,7 +52,7 @@ const SwapCard = () => {
   const handleToAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setToAmount(value);
-    
+
     if (value && !isNaN(Number(value))) {
       const price = toToken === "USDT" ? 2.5 : 0.4; // Dummy exchange rate (inverse of above)
       setFromAmount((Number(value) / price).toFixed(6));
@@ -48,12 +60,12 @@ const SwapCard = () => {
       setFromAmount("");
     }
   };
-  
+
   const handleSwitchTokens = () => {
     const tempToken = fromToken;
     setFromToken(toToken);
     setToToken(tempToken);
-    
+
     const tempAmount = fromAmount;
     setFromAmount(toAmount);
     setToAmount(tempAmount);
@@ -68,7 +80,9 @@ const SwapCard = () => {
             <Settings className="h-4 w-4" />
           </Button>
         </div>
-        <CardDescription>Trade tokens using virtual liquidity pools</CardDescription>
+        <CardDescription>
+          Trade tokens using virtual liquidity pools
+        </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* From token */}
@@ -85,8 +99,8 @@ const SwapCard = () => {
                 value={fromAmount}
                 onChange={handleFromAmountChange}
               />
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 className="absolute right-0 top-0 h-full px-3"
                 onClick={() => setFromAmount("1000")} // Max button simulation
               >
@@ -125,7 +139,7 @@ const SwapCard = () => {
             </Select>
           </div>
         </div>
-        
+
         {/* Switch tokens button */}
         <div className="flex justify-center">
           <Button
@@ -137,7 +151,7 @@ const SwapCard = () => {
             <ArrowDownIcon className="h-4 w-4" />
           </Button>
         </div>
-        
+
         {/* To token */}
         <div className="space-y-2">
           <div className="flex justify-between">
@@ -184,13 +198,16 @@ const SwapCard = () => {
             </Select>
           </div>
         </div>
-        
+
         {/* Price info */}
         {fromAmount && toAmount && (
           <div className="px-3 py-2 bg-muted rounded-md">
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">Price:</span>
-              <span>1 {fromToken} = {(Number(toAmount) / Number(fromAmount)).toFixed(6)} {toToken}</span>
+              <span>
+                1 {fromToken} ={" "}
+                {(Number(toAmount) / Number(fromAmount)).toFixed(6)} {toToken}
+              </span>
             </div>
             <div className="flex justify-between text-sm mt-1">
               <span className="text-muted-foreground">Route:</span>
@@ -202,10 +219,12 @@ const SwapCard = () => {
         )}
       </CardContent>
       <CardFooter>
-        <Button className="w-full bg-poolarize-primary hover:bg-poolarize-secondary" onClick={handleSwap} disabled={!fromAmount || !toAmount}>
-          {loading ? (
-            <RefreshCw className="h-4 w-4 animate-spin mr-2" />
-          ) : null}
+        <Button
+          className="w-full bg-poolarize-primary hover:bg-poolarize-secondary"
+          onClick={handleSwap}
+          disabled={!fromAmount || !toAmount}
+        >
+          {loading ? <RefreshCw className="h-4 w-4 animate-spin mr-2" /> : null}
           {loading ? "Swapping..." : "Swap"}
         </Button>
       </CardFooter>

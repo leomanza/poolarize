@@ -17,7 +17,7 @@ import { setupBitteWallet } from "@near-wallet-selector/bitte-wallet";
 import {
   Action,
   NetworkId,
-  setupWalletSelector
+  setupWalletSelector,
 } from "@near-wallet-selector/core";
 import { setupEthereumWallets } from "@near-wallet-selector/ethereum-wallets";
 import { setupHereWallet } from "@near-wallet-selector/here-wallet";
@@ -50,7 +50,7 @@ export class Wallet {
    */
   constructor({
     networkId = NETWORK_ID /*??*/,
-    createAccessKeyFor = undefined
+    createAccessKeyFor = undefined,
   }: {
     networkId: NetworkId;
     createAccessKeyFor: string | undefined;
@@ -67,7 +67,7 @@ export class Wallet {
    * @returns {Promise<string>} - the accountId of the signed-in user
    */
   startUp = async (
-    accountChangeHook: (accountId: string | undefined) => void
+    accountChangeHook: (accountId: string | undefined) => void,
   ) => {
     // REMOVE THIS IF NOT USING OKX WALLET
     if (typeof window !== "undefined" && window.okxwallet?.near) {
@@ -102,7 +102,7 @@ export class Wallet {
         // This configuration comes from wallets/evm
         setupEthereumWallets({
           wagmiConfig: wagmiConfig,
-          web3Modal: transformedWeb3Modal
+          web3Modal: transformedWeb3Modal,
         }),
         // @ts-expect-error - "property does not exist", ya whatever
         setupLedger(),
@@ -116,9 +116,9 @@ export class Wallet {
               : "https://testnet.wallet.bitte.ai",
           callbackUrl: window.location.href,
           // contractId: "yourcontract.near", // add if you want limited access keys to be generated
-          deprecated: false
-        })
-      ]
+          deprecated: false,
+        }),
+      ],
     });
 
     // @ts-expect-error - "property does not exist", ya whatever
@@ -136,11 +136,11 @@ export class Wallet {
         .pipe(
           // @ts-expect-error - "property does not exist", ya whatever
           map((state) => state.accounts),
-          distinctUntilChanged()
+          distinctUntilChanged(),
         )
         .subscribe((accounts: Account[]) => {
           const signedAccount = accounts.find(
-            (account) => account.active
+            (account) => account.active,
           )?.accountId;
           accountChangeHook(signedAccount!);
         });
@@ -156,7 +156,7 @@ export class Wallet {
     // @ts-expect-error - "property does not exist", ya whatever
     const modal = setupModal(await this.selector, {
       // @ts-expect-error - "property does not exist", ya whatever
-      contractId: this.createAccessKeyFor
+      contractId: this.createAccessKeyFor,
     });
     modal.show();
   };
@@ -178,7 +178,7 @@ export class Wallet {
    */
   signAndSendTransaction = async ({
     contractId,
-    actions
+    actions,
   }: {
     contractId: string;
     actions: Action[];
@@ -188,7 +188,7 @@ export class Wallet {
 
     const outcome = await selectedWallet.signAndSendTransaction({
       receiverId: contractId,
-      actions: actions
+      actions: actions,
     });
 
     return getTransactionLastResult(outcome);

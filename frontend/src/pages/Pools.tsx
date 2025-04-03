@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import VirtualPoolCard from "@/components/VirtualPoolCard";
 import StatCard from "@/components/StatCard";
@@ -100,10 +99,14 @@ const Pools = () => {
         {/* Pool Tabs */}
         <Tabs defaultValue="active" className="mb-6">
           <TabsList>
-            <TabsTrigger value="active">Active Pools ({activePools.length})</TabsTrigger>
-            <TabsTrigger value="disabled">Disabled Pools ({disabledPools.length})</TabsTrigger>
+            <TabsTrigger value="active">
+              Active Pools ({activePools.length})
+            </TabsTrigger>
+            <TabsTrigger value="disabled">
+              Disabled Pools ({disabledPools.length})
+            </TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="active" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {activePools.map((pool, index) => (
@@ -119,7 +122,7 @@ const Pools = () => {
               ))}
             </div>
           </TabsContent>
-          
+
           <TabsContent value="disabled" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {disabledPools.map((pool, index) => (

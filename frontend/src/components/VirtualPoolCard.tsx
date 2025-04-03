@@ -1,6 +1,12 @@
-
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import TokenPair from "./TokenPair";
@@ -17,13 +23,13 @@ interface VirtualPoolCardProps {
   utilization: number;
 }
 
-const VirtualPoolCard = ({ 
-  mainToken, 
-  virtualToken, 
-  tvl, 
-  price, 
+const VirtualPoolCard = ({
+  mainToken,
+  virtualToken,
+  tvl,
+  price,
   oracleStatus,
-  utilization 
+  utilization,
 }: VirtualPoolCardProps) => {
   const [isAddLiquidityOpen, setIsAddLiquidityOpen] = useState(false);
 
@@ -32,14 +38,20 @@ const VirtualPoolCard = ({
       <CardHeader className="pb-2">
         <div className="flex justify-between items-center">
           <TokenPair baseToken={mainToken} quoteToken={virtualToken} />
-          <Badge 
+          <Badge
             variant={oracleStatus === "active" ? "default" : "destructive"}
             className={oracleStatus === "active" ? "bg-green-500" : ""}
           >
-            {oracleStatus === "active" ? "Oracle Active" : oracleStatus === "expired" ? "Oracle Expired" : "Pool Disabled"}
+            {oracleStatus === "active"
+              ? "Oracle Active"
+              : oracleStatus === "expired"
+                ? "Oracle Expired"
+                : "Pool Disabled"}
           </Badge>
         </div>
-        <CardTitle className="text-lg mt-2">{mainToken}/{virtualToken}</CardTitle>
+        <CardTitle className="text-lg mt-2">
+          {mainToken}/{virtualToken}
+        </CardTitle>
         <CardDescription>Virtual Liquidity Pool</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -62,9 +74,9 @@ const VirtualPoolCard = ({
         </div>
       </CardContent>
       <CardFooter className="flex gap-2">
-        <Button 
-          variant="outline" 
-          className="w-full" 
+        <Button
+          variant="outline"
+          className="w-full"
           size="sm"
           onClick={() => setIsAddLiquidityOpen(true)}
           disabled={oracleStatus !== "active"}

@@ -1,9 +1,14 @@
-
 import Layout from "@/components/Layout";
 import StatCard from "@/components/StatCard";
 import VirtualPoolCard from "@/components/VirtualPoolCard";
 import { Button } from "@/components/ui/button";
-import { BarChart4, Droplets, ExternalLink, TrendingUp, Wallet } from "lucide-react";
+import {
+  BarChart4,
+  Droplets,
+  ExternalLink,
+  TrendingUp,
+  Wallet,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -45,19 +50,30 @@ const Index = () => {
               Capital-Efficient Token Swaps with Virtual Liquidity
             </h1>
             <p className="text-lg md:text-xl mb-8 text-white/80">
-              Poolarize is a novel AMM protocol designed to maximize capital efficiency through virtual liquidity pools and oracle-driven price discovery.
+              Poolarize is a novel AMM protocol designed to maximize capital
+              efficiency through virtual liquidity pools and oracle-driven price
+              discovery.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="bg-white text-poolarize-primary hover:bg-white/90">
+              <Button
+                asChild
+                size="lg"
+                className="bg-white text-poolarize-primary hover:bg-white/90"
+              >
                 <Link to="/swap">Start Swapping</Link>
               </Button>
-              <Button asChild size="lg" variant="secondary" className="border-white text-white hover:bg-white/10">
+              <Button
+                asChild
+                size="lg"
+                variant="secondary"
+                className="border-white text-white hover:bg-white/10"
+              >
                 <Link to="/pools">Explore Pools</Link>
               </Button>
             </div>
           </div>
         </div>
-        
+
         {/* Background graphic elements */}
         <div className="absolute right-0 top-0 bottom-0 hidden lg:block w-1/3 overflow-hidden">
           <div className="absolute -right-64 top-1/2 transform -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-white/10 backdrop-blur-3xl"></div>
@@ -109,7 +125,7 @@ const Index = () => {
               <Link to="/pools">View All Pools</Link>
             </Button>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {virtualPools.map((pool, index) => (
               <VirtualPoolCard
@@ -132,10 +148,12 @@ const Index = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">How Poolarize Works</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our innovative virtual liquidity model changes how AMMs function, requiring less capital while maintaining efficient price discovery.
+              Our innovative virtual liquidity model changes how AMMs function,
+              requiring less capital while maintaining efficient price
+              discovery.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-card p-6 rounded-lg border">
               <div className="w-12 h-12 bg-poolarize-primary/10 rounded-full flex items-center justify-center mb-4">
@@ -143,31 +161,34 @@ const Index = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Virtual Liquidity</h3>
               <p className="text-muted-foreground">
-                Only the main token requires actual liquidity. Other tokens operate through virtual balances simulated by the protocol.
+                Only the main token requires actual liquidity. Other tokens
+                operate through virtual balances simulated by the protocol.
               </p>
             </div>
-            
+
             <div className="bg-card p-6 rounded-lg border">
               <div className="w-12 h-12 bg-poolarize-primary/10 rounded-full flex items-center justify-center mb-4">
                 <TrendingUp className="h-6 w-6 text-poolarize-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Oracle Integration</h3>
               <p className="text-muted-foreground">
-                Prices for all tokens are regularly updated via oracles, ensuring accurate pricing and preventing manipulation.
+                Prices for all tokens are regularly updated via oracles,
+                ensuring accurate pricing and preventing manipulation.
               </p>
             </div>
-            
+
             <div className="bg-card p-6 rounded-lg border">
               <div className="w-12 h-12 bg-poolarize-primary/10 rounded-full flex items-center justify-center mb-4">
                 <BarChart4 className="h-6 w-6 text-poolarize-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Two-Step Swaps</h3>
               <p className="text-muted-foreground">
-                Tokens are swapped through a two-step process: Token A → USD → Token B, enabling efficient cross-token trading.
+                Tokens are swapped through a two-step process: Token A → USD →
+                Token B, enabling efficient cross-token trading.
               </p>
             </div>
           </div>
-          
+
           <div className="text-center mt-12">
             <Button asChild variant="outline" className="gap-2">
               <a href="#" target="_blank" rel="noopener noreferrer">

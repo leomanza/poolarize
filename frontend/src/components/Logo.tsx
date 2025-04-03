@@ -23,18 +23,27 @@ const Logo = ({ variant = "full", size = "lg", className = "" }: LogoProps) => {
     <div className={`flex items-center gap-2 ${className}`}>
       <div className={`relative ${sizeClasses[size]}`}>
         {/* Orbit - Thin for balance */}
-        <Orbit className={`${sizeClasses[size]} text-poolarize-primary`} strokeWidth={1.5} />
-        
+        <Orbit
+          className={`${sizeClasses[size]} text-poolarize-primary`}
+          strokeWidth={1.5}
+        />
+
         {/* Dollar Sign - Filled with accent color and white stroke */}
-        <CircleDollarSign 
-          className={`absolute inset-0 m-auto ${centerSize[size]}`} 
+        <CircleDollarSign
+          className={`absolute inset-0 m-auto ${centerSize[size]}`}
           fill="url(#gold-gradient)" // Custom gold gradient
           stroke="white"
           strokeWidth={1.5}
         />
         {/* SVG Gradient for a gold-like effect */}
         <svg width="0" height="0">
-          <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient
+            id="gold-gradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
             <stop stopColor="#FFD700" offset="0%" /> {/* Gold */}
             <stop stopColor="#FFB800" offset="50%" />
             <stop stopColor="#FFA500" offset="100%" /> {/* Deep golden */}
@@ -44,7 +53,9 @@ const Logo = ({ variant = "full", size = "lg", className = "" }: LogoProps) => {
 
       {/* Poolarize Text */}
       {variant === "full" && (
-        <span className={`font-bold ${size === "sm" ? "text-lg" : size === "md" ? "text-xl" : "text-2xl"} gradient-text`}>
+        <span
+          className={`font-bold ${size === "sm" ? "text-lg" : size === "md" ? "text-xl" : "text-2xl"} gradient-text`}
+        >
           Poolarize
         </span>
       )}

@@ -23,7 +23,7 @@ export const useWallet = createStore<StoreState>((set) => ({
   setWallet: (wallet: Wallet) => set({ wallet }),
   setSignedAccountId: (signedAccountId: string | undefined) => {
     return set({ signedAccountId });
-  }
+  },
 }));
 
 type NearProviderProps = {
@@ -38,7 +38,7 @@ export default function NearProvider({ children }: NearProviderProps) {
   useEffect(() => {
     const wallet = new Wallet({
       createAccessKeyFor: getNearContract(networkId as NetworkId),
-      networkId: networkId as NetworkId
+      networkId: networkId as NetworkId,
     });
     wallet.startUp((accountId) => setSignedAccountId(accountId));
 

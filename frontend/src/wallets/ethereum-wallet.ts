@@ -13,7 +13,7 @@ import {
   // Config as WagmiConfig,
   createConfig,
   http,
-  reconnect
+  reconnect,
 } from "@wagmi/core";
 import { createWeb3Modal } from "@web3modal/wagmi";
 
@@ -26,20 +26,20 @@ export const evmWalletChains = {
     chainId: 397,
     name: "Near Mainnet",
     explorer: "https://eth-explorer.near.org",
-    rpc: "https://eth-rpc.mainnet.near.org"
+    rpc: "https://eth-rpc.mainnet.near.org",
   },
   testnet: {
     chainId: 398,
     name: "Near Testnet",
     explorer: "https://eth-explorer-testnet.near.org",
-    rpc: "https://near-wallet-relayer.testnet.aurora.dev"
+    rpc: "https://near-wallet-relayer.testnet.aurora.dev",
   },
   localnet: {
     chainId: 398,
     name: "Near Testnet",
     explorer: "https://eth-explorer-testnet.near.org",
-    rpc: "https://eth-rpc.testnet.near.org"
-  }
+    rpc: "https://eth-rpc.testnet.near.org",
+  },
 };
 
 export const EVMWalletChain = evmWalletChains[NETWORK_ID];
@@ -50,39 +50,39 @@ export const NEARProtocol = {
   nativeCurrency: {
     decimals: 18,
     name: "NEAR",
-    symbol: "NEAR"
+    symbol: "NEAR",
   },
   rpcUrls: {
     default: { http: [EVMWalletChain.rpc] },
-    public: { http: [EVMWalletChain.rpc] }
+    public: { http: [EVMWalletChain.rpc] },
   },
   blockExplorers: {
     default: {
       name: "NEAR Explorer",
-      url: EVMWalletChain.explorer
-    }
+      url: EVMWalletChain.explorer,
+    },
   },
-  testnet: NETWORK_ID === "testnet"
+  testnet: NETWORK_ID === "testnet",
 };
 
 export const wagmiConfig = createConfig({
   chains: [NEARProtocol],
   transports: {
-    [NEARProtocol.id]: http()
+    [NEARProtocol.id]: http(),
   },
   connectors: [
     walletConnect({
       projectId: REOWN_PROJECT_ID,
-      showQrModal: false
+      showQrModal: false,
     }),
-    injected({ shimDisconnect: true })
-  ]
+    injected({ shimDisconnect: true }),
+  ],
 });
 reconnect(wagmiConfig);
 
 export const web3Modal = createWeb3Modal({
   wagmiConfig,
-  projectId: REOWN_PROJECT_ID
+  projectId: REOWN_PROJECT_ID,
 });
 
 export const transformedWeb3Modal = {
@@ -97,11 +97,11 @@ export const transformedWeb3Modal = {
 
     return {
       ...state,
-      selectedNetworkId
+      selectedNetworkId,
     };
   },
   open: web3Modal.open.bind(web3Modal),
 
   close: web3Modal.close.bind(web3Modal),
-  subscribeEvents: web3Modal.subscribeEvents.bind(web3Modal)
+  subscribeEvents: web3Modal.subscribeEvents.bind(web3Modal),
 };

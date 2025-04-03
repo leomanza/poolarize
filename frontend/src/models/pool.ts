@@ -1,4 +1,3 @@
-
 import { OracleStatus } from "@/utils/oracleService";
 
 export interface Pool {
@@ -52,6 +51,10 @@ export const formatTVL = (amount: number): string => {
 };
 
 // Format price display string
-export const formatPriceString = (mainToken: string, quoteToken: string, price: number): string => {
+export const formatPriceString = (
+  mainToken: string,
+  quoteToken: string,
+  price: number,
+): string => {
   return `1 ${mainToken} = ${formatNumber(price, 6)} ${quoteToken}`;
 };

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -10,10 +9,10 @@ interface TokenLogoProps {
 
 const TokenLogo = ({ symbol, className, size = "md" }: TokenLogoProps) => {
   const [hasError, setHasError] = useState(false);
-  
+
   // This would typically be replaced with actual token logos
   const fallbackLogo = (
-    <div 
+    <div
       className={cn(
         "rounded-full flex items-center justify-center font-semibold",
         {
@@ -21,12 +20,12 @@ const TokenLogo = ({ symbol, className, size = "md" }: TokenLogoProps) => {
           "w-8 h-8 text-sm": size === "md",
           "w-12 h-12 text-base": size === "lg",
         },
-        symbol === "VLQT" 
-          ? "bg-poolarize-primary text-white" 
-          : symbol === "USD" || symbol === "USDT" 
+        symbol === "VLQT"
+          ? "bg-poolarize-primary text-white"
+          : symbol === "USD" || symbol === "USDT"
             ? "bg-green-500 text-white"
             : "bg-blue-100 text-poolarize-primary dark:bg-gray-700",
-        className
+        className,
       )}
     >
       {symbol.slice(0, 2)}
