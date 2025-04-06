@@ -2,7 +2,7 @@
 name = "generic-nep-141-token-contract"
 version = "0.1.0"
 edition = "2018"
-authors = ["Manza <manza@poolmate.com>"]
+authors = ["Manza <manza@poolarize.xyz>"]
 
 [lib]
 crate-type = ["cdylib", "rlib"]

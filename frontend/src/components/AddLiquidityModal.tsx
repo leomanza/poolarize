@@ -89,7 +89,7 @@ const AddLiquidityModal = ({
             Add Liquidity
           </DialogTitle>
           <DialogDescription>
-            Add liquidity to the {mainToken}/{virtualToken} virtual pool
+            Add liquidity to the {mainToken}/{virtualToken} pool
           </DialogDescription>
         </DialogHeader>
 

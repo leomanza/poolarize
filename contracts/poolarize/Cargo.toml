@@ -1,7 +1,7 @@
 [package]
 name = "poolarize"
 version = "0.1.0"
-authors = ["Manza <manza@poolarize.app>"]
+authors = ["Manza <manza@poolarize.xyz>"]
 edition = "2018"
 
 [lib]

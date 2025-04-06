@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import StatCard from "@/components/StatCard";
-import VirtualPoolCard from "@/components/VirtualPoolCard";
+import PoolCard from "@/components/PoolCard";
 import { Button } from "@/components/ui/button";
 import {
   BarChart4,
@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Index = () => {
   // Dummy data for our virtual pools
-  const virtualPools = [
+  const pools = [
     {
       mainToken: "VLQT",
       virtualToken: "USDT",
@@ -116,19 +116,19 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Virtual Pools Section */}
+      {/* Pools Section */}
       <section className="py-12 bg-muted/50">
         <div className="container">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold">Virtual Pools</h2>
+            <h2 className="text-2xl md:text-3xl font-bold">Pools</h2>
             <Button asChild variant="outline">
               <Link to="/pools">View All Pools</Link>
             </Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {virtualPools.map((pool, index) => (
-              <VirtualPoolCard
+            {pools.map((pool, index) => (
+              <PoolCard
                 key={index}
                 mainToken={pool.mainToken}
                 virtualToken={pool.virtualToken}

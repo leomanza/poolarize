@@ -152,7 +152,7 @@ const CreatePool = () => {
                       <TooltipContent>
                         <p className="max-w-xs">
                           Enter the symbol of the token you want to create a
-                          virtual pool for (e.g., ETH, LINK).
+                          pool for (e.g., ETH, LINK).
                         </p>
                       </TooltipContent>
                     </Tooltip>
@@ -188,7 +188,7 @@ const CreatePool = () => {
                       <TooltipContent>
                         <p className="max-w-xs">
                           The amount of VLQT token to provide as initial
-                          liquidity for this virtual pool.
+                          liquidity for this pool.
                         </p>
                       </TooltipContent>
                     </Tooltip>
@@ -376,7 +376,7 @@ const CreatePool = () => {
                 className="w-full"
                 disabled={isSubmitting || !oracleTestResult?.success}
               >
-                {isSubmitting ? "Creating Pool..." : "Create Virtual Pool"}
+                {isSubmitting ? "Creating Pool..." : "Create Pool"}
               </Button>
             </CardFooter>
           </form>

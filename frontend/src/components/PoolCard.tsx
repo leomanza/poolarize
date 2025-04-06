@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { PlusCircle, Settings, TrendingUp } from "lucide-react";
 import AddLiquidityModal from "./AddLiquidityModal";
 
-interface VirtualPoolCardProps {
+interface PoolCardProps {
   mainToken: string;
   virtualToken: string;
   tvl: string;
@@ -23,14 +23,14 @@ interface VirtualPoolCardProps {
   utilization: number;
 }
 
-const VirtualPoolCard = ({
+const PoolCard = ({
   mainToken,
   virtualToken,
   tvl,
   price,
   oracleStatus,
   utilization,
-}: VirtualPoolCardProps) => {
+}: PoolCardProps) => {
   const [isAddLiquidityOpen, setIsAddLiquidityOpen] = useState(false);
 
   return (
@@ -100,4 +100,4 @@ const VirtualPoolCard = ({
   );
 };
 
-export default VirtualPoolCard;
+export default PoolCard;

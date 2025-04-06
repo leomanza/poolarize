@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import VirtualPoolCard from "@/components/VirtualPoolCard";
+import PoolCard from "@/components/PoolCard";
 import StatCard from "@/components/StatCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart4, TrendingUp } from "lucide-react";
@@ -66,7 +66,7 @@ const Pools = () => {
       <div className="container py-10">
         <h1 className="text-3xl font-bold mb-2">Pools</h1>
         <p className="text-lg text-muted-foreground mb-8">
-          Explore all the virtual pools in the Poolarize protocol
+          Explore all the pools in the Poolarize protocol
         </p>
 
         {/* Pool Statistics */}
@@ -110,7 +110,7 @@ const Pools = () => {
           <TabsContent value="active" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {activePools.map((pool, index) => (
-                <VirtualPoolCard
+                <PoolCard
                   key={index}
                   mainToken={pool.mainToken}
                   virtualToken={pool.virtualToken}
@@ -126,7 +126,7 @@ const Pools = () => {
           <TabsContent value="disabled" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {disabledPools.map((pool, index) => (
-                <VirtualPoolCard
+                <PoolCard
                   key={index}
                   mainToken={pool.mainToken}
                   virtualToken={pool.virtualToken}
